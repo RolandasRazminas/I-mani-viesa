@@ -1,0 +1,33 @@
+
+#include <SoftwareSerial.h>
+
+String message;
+int light; // Sensorius
+SoftwareSerial bt(10, 11); // rx, tx Cia gali tekti pakeisti
+void setup() {
+  // put your setup code here, to run once:
+  bt.begin(9600);
+  //Priskiraimi pinai
+  pinMode(0,INPUT);
+  pinMode(10,INPUT);
+  pinMode(11,OUTPUT);
+  while (!Serial) {
+    ; // Laukia , kol prisijungs
+}
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  light = analogRead(0); // gaunami duomenys is sviesos sensoriaus
+  
+    if(bt.available() > 1)
+    {
+         // message = bt.getData;
+          delay(500);
+          bt.println("active");
+    }
+    else{
+        bt.print("INACTIVE");
+}
+   // bc.print(light);
+} 
